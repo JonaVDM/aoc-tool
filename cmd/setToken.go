@@ -13,7 +13,7 @@ var setTokenCmd = &cobra.Command{
 	Short: "Set the token from AOC",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		viper.Set("token", "some value")
+		viper.Set("token", args[0])
 		err := viper.WriteConfig()
 		cobra.CheckErr(err)
 
