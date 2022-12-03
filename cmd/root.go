@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"errors"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -40,4 +41,14 @@ func initConfig() {
 
 	err = viper.ReadInConfig()
 	cobra.CheckErr(err)
+}
+
+func createDir(name string) error {
+	_, err := os.Stat(name)
+
+	if errors.Is(err, os.ErrNotExist) {
+		return os.Mkdir(name, os.ModePerm)
+	}
+
+	return nil
 }

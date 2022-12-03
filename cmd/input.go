@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"errors"
 	"fmt"
 	"os"
 	"time"
@@ -46,14 +45,4 @@ func init() {
 
 	inputCmd.Flags().IntP("year", "y", today.Year(), "The year")
 	inputCmd.Flags().IntP("day", "d", today.Day(), "The year")
-}
-
-func createDir(name string) error {
-	_, err := os.Stat(name)
-
-	if errors.Is(err, os.ErrNotExist) {
-		return os.Mkdir(name, os.ModePerm)
-	}
-
-	return nil
 }
