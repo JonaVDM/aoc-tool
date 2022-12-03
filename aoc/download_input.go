@@ -15,7 +15,7 @@ func DownloadInput(year, day int, token string) ([]byte, error) {
 
 	req.Header = http.Header{
 		"Cookie":     {fmt.Sprintf("session=%s", token)},
-		"User-Agent": {"https://github.com/jonavdm/aoc-tool at jonajvdm@gmail.com"},
+		"User-Agent": {"https://github.com/jonavdm/aoc-tool by jonajvdm@gmail.com"},
 	}
 
 	client := http.Client{}
