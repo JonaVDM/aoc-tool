@@ -35,7 +35,7 @@ package {{ .Day }}_test
 import (
 	"testing"
 
-	"github.com/jonavdm/aoc-{{ .Year }}/template"
+	"github.com/jonavdm/aoc-{{ .Year }}/{{ .Day }}"
 	_ "github.com/jonavdm/aoc-{{ .Year }}/testing"
 	"github.com/stretchr/testify/assert"
 )

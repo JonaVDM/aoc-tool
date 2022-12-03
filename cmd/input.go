@@ -30,7 +30,7 @@ var inputCmd = &cobra.Command{
 		cobra.CheckErr(err)
 
 		createDir("inputs")
-		file := fmt.Sprintf("inputs/%02d", day)
+		file := fmt.Sprintf("inputs/day%02d", day)
 		err = os.WriteFile(file, inp, 0644)
 		cobra.CheckErr(err)
 
