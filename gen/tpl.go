@@ -1,13 +1,13 @@
-package tpl
+package gen
 
 type DayTempl struct {
-	Day  int
+	Day  string
 	Year int
 }
 
 func DayTemplate() []byte {
 	return []byte(`
-package day{{ .Day }}
+package {{ .Day }}
 
 import (
 	"fmt"
@@ -30,7 +30,7 @@ func Run() [2]interface{} {
 
 func DayTestTemplate() []byte {
 	return []byte(`
-package day{{ .Day }}_test
+package {{ .Day }}_test
 
 import (
 	"testing"
@@ -41,12 +41,12 @@ import (
 )
 
 func TestRun(t *testing.T) {
-	assert.Equal(t, [2]interface{}{0, 0}, day{{ .Day }}.Run())
+	assert.Equal(t, [2]interface{}{0, 0}, {{ .Day }}.Run())
 }
 
 func BenchmarkRun(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		day{{ .Day }}.Run()
+		{{ .Day }}.Run()
 	}
 }
 

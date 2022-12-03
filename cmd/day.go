@@ -1,12 +1,9 @@
 package cmd
 
 import (
-	"fmt"
-	"os"
-	"text/template"
 	"time"
 
-	"github.com/jonavdm/aoc-tool/tpl"
+	"github.com/jonavdm/aoc-tool/gen"
 	"github.com/spf13/cobra"
 )
 
@@ -19,35 +16,8 @@ var dayCmd = &cobra.Command{
 		cobra.CheckErr(err)
 		day, err := cmd.Flags().GetInt("day")
 		cobra.CheckErr(err)
-		dayStr := fmt.Sprintf("day%02d", day)
-		pwd, err := os.Getwd()
-		cobra.CheckErr(err)
 
-		data := tpl.DayTempl{
-			Day:  day,
-			Year: year,
-		}
-
-		// Create the folder
-		cobra.CheckErr(createDir(dayStr))
-
-		// Create the day file
-		mainFile, err := os.Create(fmt.Sprintf("%s/%s/%s.go", pwd, dayStr, dayStr))
-		cobra.CheckErr(err)
-		defer mainFile.Close()
-
-		dayTemplate := template.Must(template.New("day").Parse(string(tpl.DayTemplate())))
-		err = dayTemplate.Execute(mainFile, data)
-		cobra.CheckErr(err)
-
-		// Create the test file
-		testFile, err := os.Create(fmt.Sprintf("%s/%s/%s_test.go", pwd, dayStr, dayStr))
-		cobra.CheckErr(err)
-		defer testFile.Close()
-
-		testTemplate := template.Must(template.New("test").Parse(string(tpl.DayTestTemplate())))
-		err = testTemplate.Execute(testFile, data)
-		cobra.CheckErr(err)
+		cobra.CheckErr(gen.GenerateTemplates(year, day))
 	},
 }
 
