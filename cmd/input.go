@@ -3,7 +3,6 @@ package cmd
 import (
 	"fmt"
 	"os"
-	"time"
 
 	"github.com/jonavdm/aoc-tool/aoc"
 	"github.com/spf13/cobra"
@@ -39,10 +38,5 @@ var inputCmd = &cobra.Command{
 }
 
 func init() {
-	rootCmd.AddCommand(inputCmd)
-
-	today := time.Now()
-
-	inputCmd.Flags().IntP("year", "y", today.Year(), "The year")
-	inputCmd.Flags().IntP("day", "d", today.Day(), "The year")
+	dayCmd.AddCommand(inputCmd)
 }

@@ -24,7 +24,6 @@ func Run() [2]interface{} {
 		0,
 	}
 }
-
 	`)
 }
 
@@ -49,6 +48,5 @@ func BenchmarkRun(b *testing.B) {
 		{{ .Day }}.Run()
 	}
 }
-
 	`)
 }
