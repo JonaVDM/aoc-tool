@@ -19,6 +19,8 @@ var filesCmd = &cobra.Command{
 
 		cobra.CheckErr(gen.GenerateTemplates(year, day))
 		fmt.Println("Files have been generated!")
+		fmt.Println("\nNow just add the following entry to main.go:")
+		fmt.Printf("{%d, day%02d.Run, \"day%02d\"}\n", day, day, day)
 	},
 }
 

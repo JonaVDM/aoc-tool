@@ -15,8 +15,8 @@ import (
 	"github.com/jonavdm/aoc-{{ .Year }}/utils"
 )
 
-func Run() [2]interface{} {
-	data := utils.ReadFile("{{ .Day }}")
+func Run(file string) [2]interface{} {
+	data := utils.ReadFile(file)
 	fmt.Println(len(data))
 
 	return [2]interface{}{
@@ -40,7 +40,7 @@ import (
 )
 
 func TestRun(t *testing.T) {
-	assert.Equal(t, [2]interface{}{0, 0}, {{ .Day }}.Run())
+	assert.Equal(t, [2]interface{}{0, 0}, {{ .Day }}.Run("{{ .Day }}"))
 }
 
 func BenchmarkRun(b *testing.B) {
