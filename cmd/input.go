@@ -36,7 +36,3 @@ var inputCmd = &cobra.Command{
 		fmt.Println("Downloaded the input file!")
 	},
 }
-
-func init() {
-	dayCmd.AddCommand(inputCmd)
-}

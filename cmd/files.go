@@ -23,7 +23,3 @@ var filesCmd = &cobra.Command{
 		fmt.Printf("{%d, day%02d.Run, \"day%02d\"}\n", day, day, day)
 	},
 }
-
-func init() {
-	dayCmd.AddCommand(filesCmd)
-}
