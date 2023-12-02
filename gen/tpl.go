@@ -6,8 +6,7 @@ type DayTempl struct {
 }
 
 func DayTemplate() []byte {
-	return []byte(`
-package {{ .Day }}
+	return []byte(`package {{ .Day }}
 
 import (
 	"fmt"
@@ -23,13 +22,11 @@ func Run(file string) [2]interface{} {
 		0,
 		0,
 	}
-}
-	`)
+}`)
 }
 
 func DayTestTemplate() []byte {
-	return []byte(`
-package {{ .Day }}_test
+	return []byte(`package {{ .Day }}_test
 
 import (
 	"testing"
@@ -45,8 +42,7 @@ func TestRun(t *testing.T) {
 
 func BenchmarkRun(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		{{ .Day }}.Run({{ .Day }})
+		{{ .Day }}.Run("{{ .Day }}")
 	}
-}
-	`)
+}`)
 }
